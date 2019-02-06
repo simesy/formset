@@ -55,9 +55,9 @@ entity.formset.element.add_form:
  
 ### Use webform structure
 
-The code is structure almost identically to webform (and webform UI for the elements)
-so you can compare the overridden class in the same directory in webform module.
-Also the admin paths are the same.
+The code is structured almost identically to webform and webform_ui,
+so you can compare the overridden classes in the same directory between each module.
+The admin paths are the same for the same reason.
 
 This is not so much a technical limitation as a developer convenience trying to work
 out what's going on.
