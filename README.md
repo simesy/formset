@@ -1,20 +1,33 @@
 # Form set
 
-This is a proof of concept. Say you need to allow users to create "form sets"
-or more accurate "form element sets". Webform module provides an amazing 
-user experience for creating forms, but you're already using it for various
-site forms.
+Proof of concept. Do not use in production.
 
 ## What it does
 
-This module tries to mimic what webform does allowing a new entity type called
-formset to be created. You can add form elements to the formset. And the formset
-is exported to configuration.
+This module tries to mimic a subset of what Webform does by allowing a new entity type called
+`formset` to be created. A formset is like kissing cousin to `webform` (yes it's a little coupled).
+
+You can create a `formset` entity, and at its core it's a super dumbed down webform. Then you 
+can add form elements to the "formset". And the formsets are exported to configuration
+just like webform.
+
+## Why
+
+This is a proof of concept. Say you need to allow users to create "form sets"
+or more accurate "form element sets". Webform module provides an amazing 
+user experience for creating forms, but you're already using it for various
+site forms. So you use this module to give users somewhere to create form sets.
 
 ## What it doesn't do (intentionally)
 
 No support for submissions. Some other module might be using these form
 element bundles, for whatever. This removes a lot of complexity.
+
+No "view" of a formset. The idea is you programmatically load it like you would a
+webform, for other purposes.
+
+Very minimal consideration around editing access. Structurally it has the same
+access class as Webform, but dumbed down (an not tested).
 
 ## Code strategy
 
@@ -91,6 +104,8 @@ avoiding any webform complications.
 
 ## Can you use this code?
 
+It's not security tested, only cursory treatment of permissions. Do not use on production website.
+
 Site builders can't use this code. I've barely tested the elements other than "number"
 and "text". Missing features like can't delete elements. The module does nothing
 by itself really - you'd need custom code to use the "formsets".
@@ -108,4 +123,7 @@ little route jiggery and one method override in `WebformCodeMirror`.
 
 I think a module would be useful for developers who need to put some form building
 in the hands of content editors. It's architecturally achievable, but such a module
-would represent an ... unusual ... downstream consumer of Webform code.
+would represent a downstream consumer of Webform code which would frequently raise 
+questions like "is this change to the element ui a breaking change to formset
+module," which might not be an ideal scenario. But Webform is robust, not a moving
+target like JsonAPI or other modules.
