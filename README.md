@@ -65,18 +65,17 @@ out what's going on.
 ### Wrap webform classes
 
 As an example, in many cases the Entity plugin architecture expects certain features.
-`FormsetEntityViewBuilder` is unecessary as a Formset has no route or need to be "viewed"
-but having a thin wrapper around `WebformEntityViewBuilder` keeps things transparent
-and Drupal happy.
+`FormsetEntityViewBuilder` isn't needed for our module but having it keeps Drupal
+happy. So a thin wrapper around `WebformEntityViewBuilder` is used 
 
 ### Re-use methods, and tweak
 
-If a class method needs to be overridden, try calling the webform parent class
+If a class method needs to be overridden, we try calling the webform parent class
 and then modify the response from the parent.
 
-As an exaple, the class `FormsetEntityListBuilder` which extends `WebformEntityListBuilder`
-calls `->getDefaultOperations` on the parent and then removes the submission related
-operations.
+As an example, the class `FormsetEntityListBuilder` (which extends
+`WebformEntityListBuilder`) calls `getDefaultOperations()` on the parent and then
+removes the submission related operations.
 
 ```
   public function getDefaultOperations(EntityInterface $entity, $type = 'edit') {
@@ -105,26 +104,28 @@ avoiding any webform complications.
 
 ## Can you use this code?
 
-It's not security tested, only cursory treatment of permissions. Do not use on production website.
+ *Do not use on production website.*
+ 
+ It's not security tested, only cursory treatment of permissions.
 
 Site builders can't use this code. I've barely tested the elements other than "number"
-and "text". Missing features like can't delete elements. The module does nothing
-by itself really - you'd need custom code to use the "formsets".
+and "text". There are important features missing, like deleting elements.
+
+Also the module does nothing by itself really - you'd need custom code to use the "formsets".
 
 Developers could get some value if you understand the code you could potentially
-use it for something. It's pretty coupled with Webform and I'm making the assumption
-that Webform is fairly stable. Your call.
+build on it. Just remember that it'ss pretty coupled with Webform and there is an
+assumption that Webform is fairly stable. Your call.
 
 ## Conclusion
 
-Judging by how (relatively) easy this module was to write, is a big thumbs up for
-the Webform module's maturity, I wasn't expecting to be able to re-use
-the `webform/modules/webform_ui/src/Form/` classes almost completely - aside from a
-little route jiggery and one method override in `WebformCodeMirror`.
+Judging by how (relatively) easy this module was to write, it is a big thumbs up for
+the Webform module's maturity. I wasn't expecting to be able to re-use
+the classes in `webform/modules/webform_ui/src/Form/` classes almost completely.
 
-I think a module would be useful for developers who need to put some form building
+I think a module like this would be useful for developers who need to put some form building
 in the hands of content editors. It's architecturally achievable, but such a module
 would represent a downstream consumer of Webform code which would frequently raise 
 questions like "is this change to the element ui a breaking change to formset
 module," which might not be an ideal scenario. But Webform is robust, not a moving
-target like JsonAPI or other modules.
+target like some other modules.
