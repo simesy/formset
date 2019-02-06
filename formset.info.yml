@@ -1,0 +1,8 @@
+name: 'Form set'
+type: module
+description: 'Enables the creation of form sets.'
+package: Webform
+core: 8.x
+dependencies:
+  - 'webform'
+  - 'webform_ui'

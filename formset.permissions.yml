@@ -1,0 +1,33 @@
+'access formset overview':
+  title: 'Access the form set overview page'
+  description: 'Get an overview of all form sets.'
+'administer formset':
+  title: 'Administer form sets'
+  description: 'Allows administration of global YAML configuration and options.'
+  restrict access: true
+'administer formset element access':
+  title: 'Administer form set element access'
+  description: 'Restrict form set element access to certain roles and users.'
+'create formset':
+  title: 'Create form sets'
+'edit any formset':
+  title: 'Edit any form set'
+  description: 'Allows managing any form set.'
+  restrict access: true
+'edit own formset':
+  title: 'Edit own form set'
+  description: 'Allows managing of form sets created by the user.'
+'delete any formset':
+  title: 'Delete any form set'
+  restrict access: true
+'delete own formset':
+  title: 'Delete own form set'
+
+'access own formset configuration':
+  title: 'Access own form set configuration'
+  description: 'Allows users and applications to access a form set''s configuration created by the user.'
+  restrict access: true
+'access any formset configuration':
+  title: 'Access any form set configuration'
+  description: 'Allows users and applications to access any form set''s configuration.'
+  restrict access: true

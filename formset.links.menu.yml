@@ -1,0 +1,5 @@
+entity.formset.collection:
+  title: 'Form sets'
+  description: 'Create forms sets, sets of form elements.'
+  parent: system.admin_structure
+  route_name: entity.formset.collection

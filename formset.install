@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the formset module.
+ */
+
+/**
+ * Implements hook_schema().
+ *
+ * Even though Webform's are config entities we need to create a 'webform' table
+ * to track webform submission serial numbers using DB transaction locking.
+ *
+ * @see \Drupal\webform\WebformEntityStorage
+ */
+function formset_schema() {
+  $schema['formset'] = [
+    'description' => 'Formset record.',
+    'fields' => [
+      'formset_id' => [
+        'description' => 'The formset id.',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+      ],
+    ],
+    'primary key' => ['formset_id'],
+  ];
+  return $schema;
+}

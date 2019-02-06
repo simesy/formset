@@ -1,0 +1,9 @@
+services:
+  logger.channel.formset:
+    class: Drupal\Core\Logger\LoggerChannel
+    factory: logger.factory:get
+    arguments: ['formset']
+  formset.path_processor:
+    class: Drupal\formset\PathProcessor\FormsetPathProcessor
+    tags:
+      - {name: path_processor_outbound}

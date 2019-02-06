@@ -1,0 +1,133 @@
+entity.formset.collection:
+  path: '/admin/structure/formset'
+  defaults:
+    _entity_list: 'formset'
+    _title: 'Form sets'
+  requirements:
+    _custom_access: '\Drupal\formset\Access\FormsetAccountAccess::checkOverviewAccess'
+
+entity.formset.canonical:
+  path: '/formset/{formset}'
+  defaults:
+    _controller: '\Drupal\formset\Controller\FormsetEntityController::addForm'
+    _title_callback: '\Drupal\formset\Controller\FormsetEntityController::title'
+  requirements:
+    _custom_access: '\Drupal\formset\Access\FormsetAccountAccess::checkOverviewAccess'
+
+
+entity.formset.access_denied:
+  path: '/formset/{formset}/access-denied'
+  defaults:
+    _controller: '\Drupal\formset\Controller\FormsetEntityController::accessDenied'
+    _title_callback: '\Drupal\formset\Controller\FormsetEntityController::accessDeniedTitle'
+  requirements:
+    _access: 'TRUE'
+
+entity.formset.export_form:
+  path: '/admin/structure/formset/manage/{formset}/export'
+  defaults:
+    _entity_form: 'formset.export'
+    _title_callback: '\Drupal\formset\Controller\FormsetEntityController::title'
+  requirements:
+    _permission: 'export configuration'
+
+entity.formset.add_form:
+  path: '/admin/structure/formset/add'
+  defaults:
+    _entity_form: 'formset.add'
+    _title: 'Add form set'
+  requirements:
+    _entity_create_access: 'formset'
+
+entity.formset.edit_form:
+  path: '/admin/structure/formset/manage/{formset}'
+  defaults:
+    _entity_form: 'formset.edit'
+    _title_callback: '\Drupal\formset\Controller\FormsetEntityController::title'
+  requirements:
+    _entity_access: 'formset.update'
+
+entity.formset.duplicate_form:
+  path: '/admin/structure/formset/manage/{formset}/duplicate'
+  defaults:
+    _entity_form: 'formset.duplicate'
+    _title: 'Duplicate form set'
+  requirements:
+    _entity_access: 'formset.duplicate'
+
+entity.formset.delete_form:
+  path: '/admin/structure/formset/manage/{formset}/delete'
+  defaults:
+    _entity_form: 'formset.delete'
+    _title: 'Delete form set'
+  requirements:
+    _entity_access: 'formset.delete'
+
+entity.formset.settings:
+  path: '/admin/structure/formset/manage/{formset}/settings'
+  defaults:
+    _entity_form: 'formset.settings'
+    _title_callback: '\Drupal\formset\Controller\FormsetEntityController::title'
+  requirements:
+    _entity_access: 'formset.update'
+
+entity.formset.settings_form:
+  path: '/not-used'
+entity.formset.results_submissions:
+  path: '/not-used'
+
+entity.formset.element.add_form:
+  path: '/admin/structure/formset/manage/{webform}/element/add/{type}'
+  defaults:
+    _form: '\Drupal\webform_ui\Form\WebformUiElementAddForm'
+    _title: 'Add element'
+  requirements:
+    _custom_access: '\Drupal\formset\Access\FormsetAccountAccess::checkEditAccess'
+  options:
+    parameters:
+      webform:
+        type: 'entity:formset'
+
+# Todo: enable and debug these.
+
+#entity.formset.element.add_page:
+#  path: '/admin/structure/formset/manage/{formset}/element/add/page'
+#  defaults:
+#    _form: '\Drupal\webform_ui\Form\WebformUiElementAddForm'
+#    _title: 'Add page'
+#    type: webform_wizard_page
+#  requirements:
+#    _entity_access: 'formset.update'
+#
+#entity.formset.element.add_layout:
+#  path: '/admin/structure/formset/manage/{formset}/element/add/layout'
+#  defaults:
+#    _form: '\Drupal\webform_ui\Form\WebformUiElementAddForm'
+#    _title: 'Add layout'
+#    type: webform_flexbox
+#  requirements:
+#    _entity_access: 'formset.update'
+#
+#entity.formset.element.edit_form:
+#  path: '/admin/structure/formset/manage/{formset}/element/{key}/edit'
+#  defaults:
+#    _form: '\Drupal\webform_ui\Form\WebformUiElementEditForm'
+#    _title: 'Edit element'
+#  requirements:
+#    _entity_access: 'formset.update'
+#
+#entity.formset.element.duplicate_form:
+#  path: '/admin/structure/formset/manage/{formset}/element/{key}/duplicate'
+#  defaults:
+#    _form: '\Drupal\webform_ui\Form\WebformUiElementDuplicateForm'
+#    _title: 'Duplicate element'
+#  requirements:
+#    _entity_access: 'formset.update'
+#
+#entity.formset.element.delete_form:
+#  path: '/admin/structure/formset/manage/{formset}/element/{key}/delete'
+#  defaults:
+#    _form: '\Drupal\webform_ui\Form\WebformUiElementDeleteForm'
+#    _title: 'Delete element'
+#  requirements:
+#    _entity_access: 'formset.update'

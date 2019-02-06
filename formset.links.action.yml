@@ -1,0 +1,17 @@
+entity.formset.add_form:
+  route_name: entity.formset.add_form
+  title: 'Add form set'
+  class: '\Drupal\webform\Plugin\Menu\LocalAction\WebformDialogLocalAction'
+  dialog: narrow
+  appears_on:
+    - entity.formset.collection
+
+entity.formset.element:
+  route_name: entity.formset.element_action
+  title: 'Add element'
+  class: '\Drupal\webform\Plugin\Menu\LocalAction\WebformDialogLocalAction'
+  dialog: normal
+  attributes:
+    id: 'webform-ui-add-element'
+  appears_on:
+    - entity.formset.edit_form

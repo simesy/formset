@@ -1,0 +1,14 @@
+<?php
+
+/**
+ * @file
+ * Enables the creation of formsets - bundles of (webform) form api elements.
+ */
+
+/**
+ * Implements hook_form_element_info_alter.
+ */
+function formset_form_element_info_alter(array &$info) {
+  // Override the codemirror form class to handle some edge cases.
+  $info['webform_codemirror']['class'] = 'Drupal\formset\Element\FormsetCodeMirror';
+}
