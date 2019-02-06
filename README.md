@@ -35,8 +35,9 @@ The strategy for re-use of the webform code, these are in rough order of priorit
 
 ### Avoid creating code
 
-Re-using webform code where possible. Take this route that passed a Formset entity
-into WebformUiElementAddForm. The code so far has no FormsetElement* classes.
+Re-using webform code where possible. For example, this route passes a Formset entity
+into WebformUiElementAddForm (handling an awkward aspect of how route arguments are 
+passed into form builders).
  
 ```
 entity.formset.element.add_form:
