@@ -2,6 +2,8 @@
 
 Proof of concept. Do not use in production.
 
+Requires: https://www.drupal.org/project/drupal/issues/2987208#comment-12960225
+
 ## What it does
 
 This module tries to mimic a subset of what Webform does by allowing a new entity type called
